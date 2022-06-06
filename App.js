@@ -1,25 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { HomeScreen } from './Home';
+import { MapScreen } from './Map';
 
-export default function App() {
+
+function SettingsScreen() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Button
-        title="Press me"
-        color="#f194ff"
-        onPress={() => Alert.alert('Why is it always the same trainer that kicks me out!!')}
-      />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Map" component={MapScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
