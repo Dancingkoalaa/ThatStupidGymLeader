@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen } from './Home';
 import { MapScreen } from './Map';
-
+import { GetPin } from './GetLocation'
 
 function SettingsScreen() {
   return (
@@ -22,6 +22,7 @@ export default function App() {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
         <Tab.Screen name="Map" component={MapScreen} />
+        <Tab.Screen name="Pin" component={GetPin} />
       </Tab.Navigator>
     </NavigationContainer>
   );
