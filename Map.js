@@ -31,18 +31,16 @@ export function MapScreen({ route }) {
           <MapView
               style={styles.map} 
               region={{
-                  latitude: 51.934119,
-                  longitude: 4.488619,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421
+                  latitude: location.latitude,
+                  longitude: location.longitude,
+                  latitudeDelta: 0.0200,
+                  longitudeDelta: 0.0200
               }}
               initialRegion={initialRegion}
           >   
-              {/* <Marker
-                  key="End User Location"
-                  coordinate={{ latitude: location.latitude, longitude: location.longitude }}
-                  title="End User Location"
-              /> */}
+          <Marker coordinate={{ latitude: location.latitude, longitude: location.longitude }} title='You' />
+          <Marker coordinate={{ latitude: 52.020477, longitude: 4.277985 }} title='Gym: Pink Ribbon' />
+          <Marker coordinate={{ latitude: 52.023045, longitude: 4.272941 }} title='Gym: Korenmolen Windlust' />
           </MapView>
       </View>
       
