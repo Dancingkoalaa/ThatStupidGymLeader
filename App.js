@@ -1,28 +1,17 @@
-import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen } from './Home';
-import { MapScreen } from './Map';
-import { GymScreen } from './GymsList';
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
+import { AppNavigator } from './navigation/AppNavigator';
+import React from 'react';
+import ThemeProvider from './config/themeProvider';
+import ThemeWrapper from './config/themeWrapper';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen}/>
-        <Tab.Screen name="Map" component={MapScreen}/>
-        <Tab.Screen name="Gyms" component={GymScreen}/>
-      </Tab.Navigator>
-    </NavigationContainer>
+    <ThemeProvider>
+      <ThemeWrapper>
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
+      </ThemeWrapper>
+    </ThemeProvider>
   );
 }

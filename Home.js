@@ -1,20 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
+import { useTheme } from './config/themeProvider';
 
-export function HomeScreen() {
-    let message = 'Why is it always the same trainer that kicks me out!!';
+const HomeScreen = ({ navigation }) => {
+  const { theme } = useTheme();
+
     return (
+      <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.backgroundColor }]}
+    >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Home!</Text>
+        <Text style={[styles.title, { color: theme.textColor }]}>Home!</Text>
         <StatusBar style="auto" />
         <Button
           title="Press me"
-          color="#f194ff"
-          onPress={() => Alert.alert(message)}
+          color="#575555"
+          onPress={() => Alert.alert('hiii')}
         />
       </View>
+      </SafeAreaView>
     );
   }
+  
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -24,3 +31,4 @@ export function HomeScreen() {
     },
   });
   
+export { HomeScreen };

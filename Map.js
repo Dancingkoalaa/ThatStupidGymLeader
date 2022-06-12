@@ -3,7 +3,9 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { StyleSheet, View, Dimensions } from 'react-native';
 
+
 export function MapScreen({ route }) {
+  //makes a start region for the map to load
   const [initialRegion, setInitialRegion] = useState({
       latitude: 37.78825,
       longitude: -122.4324,
@@ -14,6 +16,9 @@ export function MapScreen({ route }) {
       latitude: 37.78825,
       longitude: -122.4324,
   });
+
+  const [markers, setMarkers] = useState([])
+
   useEffect(() => {
       (async () => {
           let { status } = await Location.requestForegroundPermissionsAsync();
@@ -26,6 +31,24 @@ export function MapScreen({ route }) {
           setLocation(location.coords);
       })();
   }, []);
+
+  const loadJson = () => {
+    fetch("https://stud.hosted.hr.nl/1017846/webservice/Gyms.json")
+    .then (res => res.json())
+    .then (data => setMarkers(data.items))
+    .catch(error => console.log(error))
+  }
+
+  const markerItems = markers.map((marker, index) => {
+    return <Marker
+      key={index}
+      coordinate={{ latitude: marker.latitude, longitude: marker.longitude }}
+      title={marker.title}
+      description={marker.description}
+    >
+    </Marker >
+})
+  useEffect(loadJson, [])
   return (
       <View>
           <MapView
@@ -39,8 +62,7 @@ export function MapScreen({ route }) {
               initialRegion={initialRegion}
           >   
           <Marker coordinate={{ latitude: location.latitude, longitude: location.longitude }} title='You' />
-          <Marker coordinate={{ latitude: 52.020477, longitude: 4.277985 }} title='Gym: Pink Ribbon' />
-          <Marker coordinate={{ latitude: 52.023045, longitude: 4.272941 }} title='Gym: Korenmolen Windlust' />
+          {markerItems}
           </MapView>
       </View>
       
