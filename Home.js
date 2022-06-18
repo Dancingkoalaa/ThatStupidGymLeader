@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
         <StatusBar style="auto" />
         <Button
           title="Press me"
-          color="#575555"
+          color={theme.nav.backgroundColor}
           onPress={() => Alert.alert('hiii')}
         />
       </View>

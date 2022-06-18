@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, SafeAreaView, Text, View, StatusBar, FlatList } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Button, FlatList } from 'react-native';
 import { useTheme } from './config/themeProvider';
+import { FormScreen } from './Form';
 
-export function GymScreen() {
+const GymScreen = ({ navigation }) => {
   const { theme } = useTheme();
 
     const [Gyms, setGyms] = useState([])  
@@ -20,8 +21,14 @@ export function GymScreen() {
     const renderItem = ({ item }) => {
       return (
         <View>
-          <Text> { item.title } </Text>
-          <Text> { item.description } </Text>
+          <Text style={[styles.title, { color: theme.textColor }]}> { item.title } </Text>
+          <Text style={[styles.title, { color: theme.textColor }]}> { item.description } </Text>
+          <Button 
+          title='Add a note'
+          color={theme.nav.backgroundColor}
+          onPress={() => navigation.navigate('Add note', { screen: FormScreen, id: item.id, title: item.title})} 
+          options={{ headerShown: false }}
+        />
         </View>
       )
     };
@@ -44,4 +51,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  
   });
+
+export {GymScreen};
