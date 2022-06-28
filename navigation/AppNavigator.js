@@ -17,17 +17,14 @@ export function AppNavigator() {
       <Tab.Screen
         name="Home"
         component={HomeScreen}
-        options={{ headerShown: false }}
       />
       <Tab.Screen
         name="Map"
         component={MapScreen}
-        options={{ headerShown: false }}
       />
       <Tab.Screen
         name="Gyms"
         component={GymScreen}
-        options={{ headerShown: false }}
       />
       <Tab.Screen
         name="Settings"

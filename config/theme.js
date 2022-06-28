@@ -7,6 +7,10 @@ export const defaultTheme = {
     active: '#ed5c5c',
     inActive: '#e30707',
   },
+  notesBox: {
+    textColor: '#000',
+    backgroundColor: '#7F838F',
+  },
   input: {
     textColor: '#000',
     backgroundColor: '#F5F5F5',
@@ -21,6 +25,10 @@ export const darkTheme = {
     backgroundColor: '#ed5c5c',
     active: '#fff',
     inActive: '#202124',
+  },
+  notesBox: {
+    textColor: '#fff',
+    backgroundColor: '#5B5D66',
   },
   input: {
     textColor: '#fff',
