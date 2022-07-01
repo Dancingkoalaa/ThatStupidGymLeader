@@ -3,7 +3,7 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { StyleSheet, View, Dimensions } from 'react-native';
 
-
+//The function that will load the map on the current location. 
 export function MapScreen({ route }) {
   //makes a start region for the map to load
   const [initialRegion, setInitialRegion] = useState({
@@ -19,6 +19,7 @@ export function MapScreen({ route }) {
 
   const [markers, setMarkers] = useState([])
 
+  //checks if the user has granted permission to use the users location
   useEffect(() => {
       (async () => {
           let { status } = await Location.requestForegroundPermissionsAsync();
@@ -32,6 +33,7 @@ export function MapScreen({ route }) {
       })();
   }, []);
 
+  //Fetches the data from the webservice and loads them in
   const loadJson = () => {
     fetch("https://stud.hosted.hr.nl/1017846/webservice/Gyms.json")
     .then (res => res.json())
@@ -48,6 +50,7 @@ export function MapScreen({ route }) {
     >
     </Marker >
 })
+  //loads the map amd will load the users location
   useEffect(loadJson, [])
   return (
       <View>
@@ -68,6 +71,8 @@ export function MapScreen({ route }) {
       
   );
   }
+
+  //Styling
   const styles = StyleSheet.create({
     map: {
       width: Dimensions.get('window').width,

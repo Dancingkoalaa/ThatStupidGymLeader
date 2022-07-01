@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { SafeAreaView, StyleSheet, TextInput, View, Text, Button } from "react-native";
 import { useRoute } from '@react-navigation/native';
-import { useTheme } from './config/themeProvider';
+import { useTheme } from '../config/themeProvider';
 import { GymScreen } from './GymsList';
 import * as SQLite from 'expo-sqlite';
 
@@ -21,14 +21,14 @@ function openDatabase() {
   }
 const db = openDatabase();
 
-//the form component to load in
+//the form view that will be loaded
 const FormScreen = ({ navigation }) => {
     const route = useRoute();
     const {theme} = useTheme();
     const { screen, id, title } = route.params;
     const [text, setText] = React.useState("");
 
-    //checks if there is a table, otherwise it makes a new one
+    //checks if there is a table available, otherwise it will make a new one
     useEffect(() => {
         db.transaction((tx) => {
             tx.executeSql(
@@ -37,14 +37,14 @@ const FormScreen = ({ navigation }) => {
         });
     }, []);
 
-    //checks if the text is empty, if not it will add to DB
+    //checks if the text is empty, and decides if it should be added to db
     const add = (text) => {
         //check if its filled
         if(text === null || text === "") {
             return false;
         }
 
-        //if its filled, it will add all info to the DB
+        //if its filled, it will add all filled info into the DB
         db.transaction(
             (tx) => {
                 tx.executeSql("insert into notes (itemId, noteText) values (?, ?)", [id, text]);
@@ -86,6 +86,7 @@ const FormScreen = ({ navigation }) => {
     );
 }
 
+//Styling
 const styles = StyleSheet.create({
     input: {
         height: 40,
@@ -101,4 +102,5 @@ const styles = StyleSheet.create({
       },
 });
 
+//Export the Form so it can be called by the navigation 
 export {FormScreen};

@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { useTheme } from './config/themeProvider';
+import { useTheme } from '../config/themeProvider';
 
+//Loads the settings screen
 export function Settings() {
   const { theme, updateTheme } = useTheme();
   const changeTheme = () => updateTheme(theme.themeMode);
@@ -19,6 +20,7 @@ export function Settings() {
   );
 }
 
+//Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

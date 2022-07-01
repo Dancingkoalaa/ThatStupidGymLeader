@@ -11,6 +11,7 @@ const Tab = ({ color, tab, onPress, icon }) => {
   );
 };
 
+//Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -20,4 +21,5 @@ const styles = StyleSheet.create({
   },
 });
 
+//exports the tab
 export default Tab;

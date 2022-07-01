@@ -10,6 +10,7 @@ const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(defaultTheme);
   const [isLoadingTheme, setIsLoadingTheme] = useState(true);
 
+  //Look at what the current theme is to allow the change
   const findOldTheme = async () => {
     const themeMode = await AsyncStorage.getItem('themeMode');
     if (themeMode !== null) {
@@ -23,12 +24,14 @@ const ThemeProvider = ({ children }) => {
     findOldTheme();
   }, []);
 
+  //Change the theme of the page to the non-active theme
   const updateTheme = currentThemeMode => {
     const newTheme = currentThemeMode === 'default' ? darkTheme : defaultTheme;
     setTheme(newTheme);
     AsyncStorage.setItem('themeMode', newTheme.themeMode);
   };
 
+  //Returns the theme
   return (
     <ThemeContext.Provider value={{ theme, isLoadingTheme, updateTheme }}>
       {children}
@@ -42,4 +45,5 @@ const styles = StyleSheet.create({
   container: {},
 });
 
+//Export the ThemeProvider so it can be found by the App.js file
 export default ThemeProvider;

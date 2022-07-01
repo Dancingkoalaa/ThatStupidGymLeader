@@ -5,6 +5,7 @@ import Tab from './Tab';
 
 const { width } = Dimensions.get('screen');
 
+//loads the tabBar
 const TabBar = ({ state, navigation }) => {
   const [selected, setSelected] = useState('Home');
   const { theme } = useTheme();
@@ -19,6 +20,7 @@ const TabBar = ({ state, navigation }) => {
     }
   };
 
+  //returns the navigation
   return (
     <View style={{ position: 'absolute', bottom: 0, width: width}}>
       <View
@@ -45,4 +47,5 @@ const styles = StyleSheet.create({
 
 });
 
+//exports the TabBar
 export default TabBar;

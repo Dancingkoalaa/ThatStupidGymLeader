@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
-import { useTheme } from './config/themeProvider';
+import { useTheme } from '../config/themeProvider';
 
+//the home view that will be loaded
 const HomeScreen = ({ navigation }) => {
   const { theme } = useTheme();
 
@@ -22,6 +23,7 @@ const HomeScreen = ({ navigation }) => {
     );
   }
   
+  //Styling
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -31,4 +33,5 @@ const HomeScreen = ({ navigation }) => {
     },
   });
   
+//Export the HomeScreen so it can be called by the navigation   
 export { HomeScreen };

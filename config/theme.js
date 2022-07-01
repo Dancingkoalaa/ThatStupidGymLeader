@@ -31,8 +31,8 @@ export const darkTheme = {
     backgroundColor: '#5B5D66',
   },
   input: {
-    textColor: '#fff',
-    backgroundColor: '#1A1A1A',
+    textColor: '#000000',
+    backgroundColor: '#ffffff',
   },
   themeMode: 'dark',
 };

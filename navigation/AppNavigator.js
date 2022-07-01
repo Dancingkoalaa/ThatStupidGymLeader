@@ -2,14 +2,16 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBar from './TabBar';
 
-import { HomeScreen } from '../Home';
-import { MapScreen } from '../Map';
-import { GymScreen } from '../GymsList';
-import { Settings } from '../Settings';
-import { FormScreen } from '../Form';
+import { HomeScreen } from '../Views/Home';
+import { MapScreen } from '../Views/Map';
+import { GymScreen } from '../Views/GymsList';
+import { Settings } from '../Views/Settings';
+import { FormScreen } from '../Views/Form';
+import { EditScreen } from '../Views/Edit';
 
 const Tab = createBottomTabNavigator();
 
+//Loads the navigation which is visible on all screens
 export function AppNavigator() {
   return (
     //* using a tab navigator to navigate
@@ -34,6 +36,10 @@ export function AppNavigator() {
         name="Add note" 
         component={FormScreen} 
       />
+      <Tab.Screen
+        name="Edit Note"
+        component={EditScreen}
+        />
     </Tab.Navigator>
   );
 }
