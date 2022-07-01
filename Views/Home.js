@@ -11,12 +11,12 @@ const HomeScreen = ({ navigation }) => {
       style={[styles.container, { backgroundColor: theme.backgroundColor }]}
     >
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={[styles.title, { color: theme.textColor }]}>Home!</Text>
+        <Text style={[styles.title, { color: theme.textColor }]}>That Stupid Gymleader!!!</Text>
         <StatusBar style="auto" />
         <Button
           title="Press me"
           color={theme.nav.backgroundColor}
-          onPress={() => Alert.alert('hiii')}
+          onPress={() => Alert.alert('NO ITS MY GYM STOP IT')}
         />
       </View>
       </SafeAreaView>
